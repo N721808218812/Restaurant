@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Corso.Models.Detalji>
+
+@{
+    ViewData["Title"] = "Detalji";
+}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/img/pocetna/bg_5.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center mb-4">
+                <h1 class="mb-2 bread">Contact Us</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Reservation <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+<p>
+    <a asp-action="Detalji">Sva jela</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Iddetalja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Putanja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sastojci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popularno)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iddetalja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Putanja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sastojci)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Popularno)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditDetalji", new { id = item.Iddetalja }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "DeleteDetalj", new { id = item.Iddetalja }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

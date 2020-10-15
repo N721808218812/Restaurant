@@ -1,0 +1,91 @@
+﻿@model Corso.Models.Detalji
+
+@{
+    ViewData["Title"] = "EditDetalji";
+}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/img/pocetna/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center mb-4">
+                <h1 class="mb-2 bread">Contact Us</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Reservation <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h4>Detalji selektovanog jela</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDetalji" method="post" enctype="multipart/form-data" asp-controller="CRUD">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Iddetalja" class="control-label"></label>
+                <input asp-for="Iddetalja" class="form-control" readonly />
+                <span asp-validation-for="Iddetalja" class="text-danger"></span>
+            </div><div class="form-group">
+                <label asp-for="Idkategorije" class="control-label"></label>
+                <input asp-for="Idkategorije" class="form-control" readonly />
+                <span asp-validation-for="Iddetalja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Naziv" class="control-label"></label>
+                <input asp-for="Naziv" class="form-control" />
+                <span asp-validation-for="Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="file" name="ifile" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Putanja" class="control-label" hidden></label>
+                <input asp-for="Putanja" class="form-control" hidden />
+                <span asp-validation-for="Putanja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sastojci" class="control-label"></label>
+                <textarea asp-for="Sastojci" class="form-control" cols="40" rows="16"></textarea>
+                <span asp-validation-for="Sastojci" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opis" class="control-label"></label>
+                <textarea asp-for="Opis" class="form-control" cols="40" rows="4"></textarea>
+                <span asp-validation-for="Opis" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Cena" class="control-label"></label>
+                <input asp-for="Cena" class="form-control" />
+                <span asp-validation-for="Cena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Popularno" class="control-label"></label>
+
+                <br />
+                @Html.RadioButtonFor(a => a.Popularno, true) Da
+                <br />
+
+                @Html.RadioButtonFor(a => a.Popularno, false) Ne
+
+
+                @*<input asp-for="Popularno" class="form-control" />*@
+                <span asp-validation-for="Popularno" class="text-danger"></span>
+            </div>
+            <center>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </center>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Detalji">Nazad na listu svih jela</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
